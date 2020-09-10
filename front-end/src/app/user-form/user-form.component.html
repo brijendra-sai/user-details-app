@@ -1,0 +1,56 @@
+<div class="container">
+  <form class="form" id="userForm" name="userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="nameContainer">
+      <div class="form-control"
+        [ngClass]="{'error': userForm.get('firstName').touched && userForm.get('firstName').invalid}">
+        <label for="firstName">First Name*</label>
+        <input type="text" id="firstName" formControlName="firstName" [(ngModel)]="user.firstName">
+        <small *ngIf="userForm.get('firstName').hasError('required')">First Name is Required field</small>
+        <small *ngIf="userForm.get('firstName').hasError('minlength')">First Name should be of at least 3 char
+          length</small>
+        <small *ngIf="userForm.get('firstName').hasError('maxlength')">First Name should be of at most 150 char
+          length</small>
+      </div>
+      <div class="form-control"
+        [ngClass]="{'error': userForm.get('lastName').touched && userForm.get('lastName').invalid}">
+        <label for="lastName">Last Name*</label>
+        <input type="text" id="lastName" formControlName="lastName" [(ngModel)]="user.lastName">
+        <small *ngIf="userForm.get('lastName').hasError('required')">Last Name is Required field</small>
+        <small *ngIf="userForm.get('lastName').hasError('minlength')">Last Name should be of at least 3 char
+          length</small>
+        <small *ngIf="userForm.get('lastName').hasError('maxlength')">Last Name should be of at most 150 char
+          length</small>
+      </div>
+    </div>
+    <div class="form-control" [ngClass]="{'error': userForm.get('email').touched && userForm.get('email').invalid}">
+      <label for="email">Email*</label>
+      <input type="email" id="email" formControlName="email" [(ngModel)]="user.email">
+      <small>Enter a valid email address</small>
+    </div>
+    <div class="form-control"
+      [ngClass]="{'error': userForm.get('mobileNumber').touched && userForm.get('mobileNumber').invalid}">
+      <label for="mobileNumber">Mobile Number*</label>
+      <div class="mobileNumber-container"><span>(+91)</span><input type="number" id="mobileNumber"
+          formControlName="mobileNumber" [(ngModel)]="user.mobileNumber"></div>
+      <small *ngIf="userForm.get('mobileNumber').hasError('required')">Mobile Number is Required field</small>
+      <small *ngIf="userForm.get('mobileNumber').hasError('max')">Mobile Number should be ten digits</small>
+      <small *ngIf="userForm.get('mobileNumber').hasError('min')">Mobile Number should be ten digits</small>
+    </div>
+    <div class="form-control checkbox">
+      <label for="status">Status</label>
+      <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" formControlName="status" [(ngModel)]="user.status"
+          class="onoffswitch-checkbox" id="status" tabindex="0">
+        <label class="onoffswitch-label" for="myonoffswitch" (click)="toggleStatus()">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
+      </div>
+    </div>
+    <div class="buttons">
+      <button type="reset">Reset</button>
+      <button type="submit" [disabled]="userForm.invalid">{{formFunction}}</button>
+    </div>
+  </form>
+</div>
