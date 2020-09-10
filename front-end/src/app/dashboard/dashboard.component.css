@@ -9,7 +9,7 @@
   background-color: white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.363);
   border-radius: 3px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 img {
@@ -18,7 +18,6 @@ img {
   margin-bottom: 1px;
   cursor: pointer;
 }
-
 tr {
   height: 46px;
 }
@@ -40,17 +39,36 @@ td:nth-child(3),
 td:nth-child(4),
 th:nth-child(3),
 th:nth-child(4) {
-  width: 150px;
+  width: 180px;
+  max-width: 300px;
+  overflow: auto;
 }
 
+td:nth-child(1),
+td:nth-child(2),
+th:nth-child(1),
+th:nth-child(2) {
+  width: 130px;
+  max-width: 230px;
+  overflow: auto;
+}
 
-tr:nth-child(even){background-color: #f2f2f2;}
+td:nth-child(5),
+th:nth-child(5) {
+  width: 80px;
+}
 
-tr:hover {background-color: #ddd;}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
 
 th {
   background-color: rgba(192, 209, 115, 0.89);
-  color: rgba(70, 59, 172, 0.863)
+  color: rgba(70, 59, 172, 0.863);
 }
 
 table {
@@ -59,18 +77,37 @@ table {
 
 th,
 td {
-  padding: 7px;
+  padding: 7px 13px;
   margin: 0;
   text-align: center;
-  width: 100px;
+}
+
+td {
+  border-right: 1px solid rgba(95, 95, 95, 0.144);
 }
 
 td:last-child,
 th:last-child {
   margin: 5px;
   width: 60px;
+  border: none;
 }
 
 i {
   margin: 2px;
+}
+
+/* table elements scrollbar*/
+
+*::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(204, 206, 193, 0.473);
+  box-shadow: -1px -1px 1px rgba(128, 128, 128, 0.123);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(145, 145, 145, 0.534);
+  border-radius: 4px;
 }
